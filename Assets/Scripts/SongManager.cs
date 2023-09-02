@@ -12,7 +12,7 @@ public class SongManager : MonoBehaviour
 {
     public static SongManager Instance;
     public AudioSource audioSource;
-    //public Lane[] lanes;
+    public Lane[] lanes;
     public float songDelayInSeconds;
     public int inputDelayInMilliseconds;
     public double marginOfError;
@@ -35,6 +35,10 @@ public class SongManager : MonoBehaviour
             Application.streamingAssetsPath.StartsWith("https://"))
         {
             StartCoroutine(ReadFromWebsite());
+        }
+        else
+        {
+            ReadFromFile();
         }
     }
     private IEnumerator ReadFromWebsite()
@@ -69,7 +73,7 @@ public class SongManager : MonoBehaviour
         var notes = midiFile.GetNotes();
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
         notes.CopyTo(array, 0);
-        //foreach (var lane in lanes) lane.SetTimeStamps(array);
+        foreach (var lane in lanes) lane.SetTimeStamps(array);
         Invoke(nameof(StartSong), songDelayInSeconds);
     }
     public void StartSong()
