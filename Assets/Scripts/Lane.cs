@@ -10,7 +10,7 @@ public class Lane : MonoBehaviour
     public KeyCode input;
     public GameObject notePrefab;
     List<Note> notes = new List<Note>();
-    public List<double> timeStamps = new List<double>();
+    public List<double> timeStamps;
 
     int spawnIndex = 0;
     int inputIndex = 0;
