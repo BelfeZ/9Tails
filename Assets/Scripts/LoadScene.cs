@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] private Animator transition;
-    [SerializeField] private int sceneIndex;
+    private string sceneName;
     
     // Start is called before the first frame update
     void Start()
@@ -28,14 +28,19 @@ public class LoadScene : MonoBehaviour
     
     public void LoadNextLevel()
     {
-        StartCoroutine(LoadLevel(sceneIndex));
+        StartCoroutine(LoadLevel("Scene1"));
     }
 
-    IEnumerator LoadLevel(int levelindex)
+    public void BackToMenu()
     {
-        sceneIndex = levelindex;
+        StartCoroutine(LoadLevel("MainMenu"));
+    }
+
+    IEnumerator LoadLevel(string scenename)
+    {
+        sceneName = scenename;
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(scenename);
     }
 }
