@@ -6,12 +6,19 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] private Animator transition;
+    private string sceneName;
     
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
+    /*public void GoToLevelSelection()
+    {
+        SceneManager.LoadScene("LevelSelection");
+        Time.timeScale = 1f;
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -21,13 +28,19 @@ public class LoadScene : MonoBehaviour
     
     public void LoadNextLevel()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(LoadLevel("Scene1"));
     }
 
-    IEnumerator LoadLevel(int levelindex)
+    public void BackToMenu()
     {
+        StartCoroutine(LoadLevel("MainMenu"));
+    }
+
+    IEnumerator LoadLevel(string scenename)
+    {
+        sceneName = scenename;
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(levelindex);
+        SceneManager.LoadScene(scenename);
     }
 }
