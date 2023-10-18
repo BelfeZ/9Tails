@@ -11,6 +11,7 @@ public class Lane : MonoBehaviour
     public GameObject notePrefab;
     List<Note> notes = new List<Note>();
     public List<double> timeStamps;
+    public CharacterAnimation charAnimation;
 
     int spawnIndex = 0;
     int inputIndex = 0;
@@ -72,8 +73,9 @@ public class Lane : MonoBehaviour
     {
         ScoreManager.Hit();
     }
-    private void Miss()
+    public void Miss()
     {
+        charAnimation.TriggerMissedAnimation();
         ScoreManager.Miss();
     }
 }
