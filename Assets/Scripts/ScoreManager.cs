@@ -8,24 +8,32 @@ public class ScoreManager : MonoBehaviour
     //public AudioSource hitSFX;
     //public AudioSource missSFX;
     public TMPro.TextMeshPro scoreText;
-    static int comboScore;
+    static int currentScore;
+    static int perfectScore = 20;
+    static int greatScore = 10;
+    
     void Start()
     {
         Instance = this;
-        comboScore = 0;
+        currentScore = 0;
     }
     public static void Hit()
     {
-        comboScore += 1;
+        currentScore+= perfectScore;
         //Instance.hitSFX.Play();
+    }
+
+    public static void Great()
+    {
+        currentScore += greatScore;
     }
     public static void Miss()
     {
-        comboScore = 0;
+        currentScore += 0;
         //Instance.missSFX.Play();
     }
     private void Update()
     {
-        scoreText.text = comboScore.ToString();
+        scoreText.text = currentScore.ToString();
     }
 }

@@ -73,6 +73,11 @@ public class Lane : MonoBehaviour
     {
         ScoreManager.Hit();
     }
+
+    public void GreatHit()
+    {
+        ScoreManager.Great();
+    }
     public void Miss()
     {
         charAnimation.TriggerMissedAnimation();
