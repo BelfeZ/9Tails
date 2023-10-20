@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
         Instance = this;
         currentScore = 0;
     }
-    public static void Hit()
+    public static void Perfect()
     {
         currentScore+= perfectScore;
         //Instance.hitSFX.Play();
