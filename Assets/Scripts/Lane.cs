@@ -15,6 +15,8 @@ public class Lane : MonoBehaviour
 
     int spawnIndex = 0;
     int inputIndex = 0;
+
+    public Healthbar healthbar;
     
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
@@ -79,15 +81,27 @@ public class Lane : MonoBehaviour
     private void PerfectHit()
     {
         ScoreManager.Perfect();
+
+        //Don Update
+        healthbar.Perfect_Healthbar();
+        //to here
     }
 
     public void GreatHit()
     {
         ScoreManager.Great();
+
+        //Don Update
+        healthbar.Great_Healthbar();
+        //to here
     }
     public void Miss()
     {
         charAnimation.TriggerMissedAnimation();
         ScoreManager.Miss();
+
+        //Don Update
+        healthbar.Missed_Healthbar();
+        //to here
     }
 }

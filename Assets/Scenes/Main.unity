@@ -157,6 +157,7 @@ MonoBehaviour:
   notePrefab: {fileID: 7151522083910069281, guid: 5616ef8c4f5186b4dbd4fb319f5ab96c, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1138346574}
+  healthbar: {fileID: 559220580}
 --- !u!4 &1121716
 Transform:
   m_ObjectHideFlags: 0
@@ -787,6 +788,7 @@ MonoBehaviour:
   notePrefab: {fileID: 922600066160796502, guid: 179ce9d275de7d547b93f71a50b8c2ff, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1182542618}
+  healthbar: {fileID: 559220580}
 --- !u!4 &545793160
 Transform:
   m_ObjectHideFlags: 0
@@ -802,6 +804,113 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1373972788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &559220577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559220578}
+  - component: {fileID: 559220579}
+  - component: {fileID: 559220580}
+  m_Layer: 5
+  m_Name: Health bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &559220578
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559220577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1519763491}
+  - {fileID: 1268321703}
+  - {fileID: 1044714606}
+  m_Father: {fileID: 737678441}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -603.18, y: 475.97}
+  m_SizeDelta: {x: 649, y: 63}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &559220579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559220577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 0}
+  m_FillRect: {fileID: 1268321703}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 50
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &559220580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559220577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d970fea73c2030488b5d4f747cfec1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Healthbar_Silder: {fileID: 559220579}
+  maxHealth: 100
+  currentHealth: 0
+  life: 0
 --- !u!1 &667762539
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,6 +945,7 @@ MonoBehaviour:
   notePrefab: {fileID: 2039977322507197967, guid: 82ffa2c3ae2fee94eb7822cac55a84b2, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1215887712}
+  healthbar: {fileID: 559220580}
 --- !u!4 &667762541
 Transform:
   m_ObjectHideFlags: 0
@@ -945,7 +1055,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1044714606}
+  - {fileID: 559220578}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -987,6 +1097,7 @@ MonoBehaviour:
   notePrefab: {fileID: 3865670576671484263, guid: b9185883b85811b4eabfec57f9cbf13c, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1685580361}
+  healthbar: {fileID: 559220580}
 --- !u!4 &799342053
 Transform:
   m_ObjectHideFlags: 0
@@ -1303,7 +1414,7 @@ GameObject:
   - component: {fileID: 1044714608}
   - component: {fileID: 1044714607}
   m_Layer: 5
-  m_Name: HP
+  m_Name: HP_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1316,19 +1427,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044714605}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1519763491}
-  - {fileID: 1268321703}
-  m_Father: {fileID: 737678441}
+  m_Children: []
+  m_Father: {fileID: 559220578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 386.82214, y: -80.90552}
-  m_SizeDelta: {x: 666.9672, y: 65.810974}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1044714607
 MonoBehaviour:
@@ -1343,14 +1452,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.76470596, g: 0.07450981, b: 0.32156864, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3a93734732dc0a3499f344e0a012749d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1765,6 +1874,7 @@ MonoBehaviour:
   notePrefab: {fileID: 6842798966598062276, guid: 3c48fb8faacaace4b82e78730a0f290b, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1642597230}
+  healthbar: {fileID: 559220580}
 --- !u!4 &1235510113
 Transform:
   m_ObjectHideFlags: 0
@@ -1810,12 +1920,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1044714606}
+  m_Father: {fileID: 559220578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.28735352, y: 0.00061035156}
-  m_SizeDelta: {x: 652.121, y: 49.997}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268321704
 MonoBehaviour:
@@ -1923,12 +2033,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1044714606}
+  m_Father: {fileID: 559220578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.28735352, y: 0.00061035156}
-  m_SizeDelta: {x: 652.121, y: 49.997}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1519763492
 MonoBehaviour:
@@ -2002,6 +2112,7 @@ MonoBehaviour:
   notePrefab: {fileID: 1334611509876185940, guid: c7366f8ef572d8d40bff03f3275a37b0, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1038212065}
+  healthbar: {fileID: 559220580}
 --- !u!4 &1641851165
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,6 +2509,7 @@ MonoBehaviour:
   notePrefab: {fileID: 513779610764421356, guid: 14fc87820e2295c4d9bca2a032340bb0, type: 3}
   timeStamps: []
   charAnimation: {fileID: 2099412087}
+  healthbar: {fileID: 559220580}
 --- !u!4 &1791309942
 Transform:
   m_ObjectHideFlags: 0
