@@ -6,12 +6,12 @@ using Melanchall.DryWetMidi.Interaction;
 
 public class Lane : MonoBehaviour
 {
-    public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
-    public KeyCode input;
-    public GameObject notePrefab;
+    [SerializeField] public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
+    [SerializeField] public KeyCode input;
+    [SerializeField] public GameObject notePrefab;
     List<Note> notes = new List<Note>();
-    public List<double> timeStamps;
-    public CharacterAnimation charAnimation;
+    [SerializeField] public List<double> timeStamps;
+    [SerializeField] public CharacterAnimation charAnimation;
 
     int spawnIndex = 0;
     int inputIndex = 0;

@@ -6,20 +6,23 @@ using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using System.Net;
 using UnityEngine.Networking;
-
+using System;
+using System.Linq;
 
 public class SongManager : MonoBehaviour
 {
-    public static SongManager Instance;
-    public AudioSource audioSource;
-    public Lane[] lanes;
-    public float songDelayInSeconds;
-    public int inputDelayInMilliseconds;
-    public double marginOfError;
-    public string fileLocation;
-    public float noteTime;
-    public float noteSpawnX;
-    public float noteTapX;
+    [SerializeField] public static SongManager Instance;
+    [SerializeField] public AudioSource audioSource;
+    [SerializeField] public Lane[] lanes;
+    [SerializeField] public float songDelayInSeconds;
+    [SerializeField] public int inputDelayInMilliseconds;
+    [SerializeField] public double marginOfError;
+    [SerializeField] public string fileLocation;
+    [SerializeField] public float noteTime;
+    [SerializeField] public float noteSpawnX;
+    [SerializeField] public float noteTapX;
+    private float timeLeft;
+    private bool finished;
     public float noteDespawnX
     {
         get
@@ -30,6 +33,7 @@ public class SongManager : MonoBehaviour
     public static MidiFile midiFile;
     void Start()
     {
+        finished = false;
         Instance = this;
         if (Application.streamingAssetsPath.StartsWith("http://") ||
             Application.streamingAssetsPath.StartsWith("https://"))
@@ -39,6 +43,22 @@ public class SongManager : MonoBehaviour
         else
         {
             ReadFromFile();
+        }
+        TempoMap tempoMap = midiFile.GetTempoMap();
+        TimeSpan midiFileDuration = midiFile.GetTimedEvents().LastOrDefault(e => e.Event is NoteOffEvent)?.TimeAs<MetricTimeSpan>(tempoMap) ?? new MetricTimeSpan();
+        timeLeft = (float)midiFileDuration.TotalSeconds;
+        Debug.Log(timeLeft+" seceond.");
+    }
+    private void Update()
+    {
+        timeLeft -= Time.deltaTime;
+        if (timeLeft <= 0)
+        {
+            if (finished == false)
+            {
+                StartCoroutine(SongEnded());
+                finished = true;
+            }
         }
     }
     private IEnumerator ReadFromWebsite()
@@ -67,7 +87,7 @@ public class SongManager : MonoBehaviour
         midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
         GetDataFromMidi();
     }
-    
+
     public void GetDataFromMidi()
     {
         var notes = midiFile.GetNotes();
@@ -83,5 +103,11 @@ public class SongManager : MonoBehaviour
     public static double GetAudioSourceTime()
     {
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+    }
+    private IEnumerator SongEnded()
+    {
+        Debug.Log("Song ended waiting for result.");
+        yield return new WaitForSeconds(5); 
+        Debug.Log("Result");
     }
 }
