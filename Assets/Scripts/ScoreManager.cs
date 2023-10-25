@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     public TMPro.TextMeshPro comboText;
     public static int currentScore;
     public static int currentMultiplier;
-    public static int multiplierTracker; 
+    //public static int multiplierTracker; 
     public static  int[] multiplierThresholds = {2,4,6};
     static int perfectScore = 20;
     static int greatScore = 10;
@@ -22,21 +22,21 @@ public class ScoreManager : MonoBehaviour
     {
         Instance = this;
         currentScore = 0;
-        currentMultiplier = 1;
+        currentMultiplier = 0;
     }
     public static void Perfect()
     {
-        if (currentMultiplier - 1 < multiplierThresholds.Length)
-        {
-            multiplierTracker++;
+        //if (currentMultiplier - 1 < multiplierThresholds.Length)
+        //{
+            //multiplierTracker++;
 
-            if (multiplierThresholds[currentMultiplier - 1] <= multiplierTracker)
-            {
-                multiplierTracker = 0;
+            //if (multiplierThresholds[currentMultiplier - 1] <= multiplierTracker)
+            //{
+                //multiplierTracker = 0;
                 currentMultiplier++;
-                Debug.Log("combo increase");
-            }
-        }
+                Debug.Log("Perfect Combo increase");
+            //}
+        //}
         
         
         currentScore+= perfectScore * currentMultiplier;
@@ -45,26 +45,26 @@ public class ScoreManager : MonoBehaviour
 
     public static void Great()
     {
-        if (currentMultiplier - 1 < multiplierThresholds.Length)
-        {
-            multiplierTracker++;
+        //if (currentMultiplier - 1 < multiplierThresholds.Length)
+        //{
+            //multiplierTracker++;
 
-            if (multiplierThresholds[currentMultiplier - 1] <= multiplierTracker)
-            {
-                multiplierTracker = 0;
+            //if (multiplierThresholds[currentMultiplier - 1] <= multiplierTracker)
+            //{
+                //multiplierTracker = 0;
                 currentMultiplier++;
-                Debug.Log("combo increase");
-            }
-        }
+                Debug.Log("Great combo increase");
+            //}
+        //}
         
         currentScore += greatScore * currentMultiplier;
     }
     public static void Miss()
     {
-        currentMultiplier = 1;
-        multiplierTracker = 0;
+        currentMultiplier = 0;
+        //multiplierTracker = 0;
         currentScore += 0;
-        Debug.Log("Reset Combo");
+        Debug.Log("Missed Reset Combo");
         //Instance.missSFX.Play();
     }
     private void Update()
