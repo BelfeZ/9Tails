@@ -2289,8 +2289,8 @@ MonoBehaviour:
   - {fileID: 667762540}
   songDelayInSeconds: 0
   inputDelayInMilliseconds: 0
-  marginOfError: 0.07
-  fileLocation: Angel_BeatV3.mid
+  marginOfError: 0.2
+  fileLocation: Gameplay_Test.mid
   noteTime: 1
   noteSpawnX: -10
   noteTapX: -13
