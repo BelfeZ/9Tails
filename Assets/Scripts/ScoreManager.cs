@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     //public AudioSource hitSFX;
     //public AudioSource missSFX;
     public TMPro.TextMeshPro scoreText;
+    public TMPro.TextMeshPro comboText;
     public static int currentScore;
     public static int currentMultiplier;
     public static int multiplierTracker; 
@@ -34,6 +37,7 @@ public class ScoreManager : MonoBehaviour
                 Debug.Log("combo increase");
             }
         }
+        
         
         currentScore+= perfectScore * currentMultiplier;
         //Instance.hitSFX.Play();
@@ -66,5 +70,6 @@ public class ScoreManager : MonoBehaviour
     private void Update()
     {
         scoreText.text = currentScore.ToString();
+        comboText.text = "Combo x" + currentMultiplier;
     }
 }
