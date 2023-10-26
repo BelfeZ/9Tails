@@ -89,8 +89,9 @@ public class Lane : MonoBehaviour
 
     public void GreatHit()
     {
+        charAnimation.TriggerGoodAnimation();
         ScoreManager.Great();
-
+        
         //Don Update
         healthbar.Great_Healthbar();
         //to here

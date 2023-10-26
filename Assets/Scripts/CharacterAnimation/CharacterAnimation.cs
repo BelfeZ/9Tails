@@ -17,6 +17,7 @@ public class CharacterAnimation : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         animator.SetBool("missed", false);
+        animator.SetBool("good", false);
         originalPosition = transform.position;
     }
 
@@ -35,6 +36,7 @@ public class CharacterAnimation : MonoBehaviour
             {
                 transform.position = originalPosition;
                 animator.SetBool("missed", false);
+                animator.SetBool("good", false);
                 isJumping = false;
             }
         }
@@ -47,4 +49,13 @@ public class CharacterAnimation : MonoBehaviour
         animator.SetBool("missed", true);
         isJumping = true;
     }
+    
+    public void TriggerGoodAnimation()
+    {
+        animationTimer = 0f;
+        animator.SetBool("good", true);
+        isJumping = true;
+    }
+
+    
 }
