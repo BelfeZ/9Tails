@@ -728,7 +728,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 32d34f57edf1ba642b09711198dd51f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dfda9d6b2a85e0742a98a8392c08c0a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1309,7 +1309,7 @@ Transform:
   m_GameObject: {fileID: 1038212061}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.898281, y: -3.325173, z: 1.0275326}
+  m_LocalPosition: {x: -5.44, y: -1.79, z: 1.0275326}
   m_LocalScale: {x: 0.07754696, y: 0.07754696, z: 0.07754696}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1376,7 +1376,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b3e8e316dddcbc642b0e5baec2644344, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1505,7 +1505,7 @@ Transform:
   m_GameObject: {fileID: 1138346570}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.7582805, y: -1.5751731, z: 1.0275326}
+  m_LocalPosition: {x: -5.52, y: -0.47, z: 1.0275326}
   m_LocalScale: {x: 0.49619, y: 0.49619, z: 0.49619}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1626,7 +1626,7 @@ Transform:
   m_GameObject: {fileID: 1182542614}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7082806, y: -3.215173, z: 1.0275326}
+  m_LocalPosition: {x: -5.15, y: -3.215173, z: 1.0275326}
   m_LocalScale: {x: 0.17799, y: 0.17799, z: 0.17799}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1693,7 +1693,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 26761453465559b4bb9a1718e8fcd8cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1799,7 +1799,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3efbde91d9c7db746a7e886c3509e365, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1820,7 +1820,7 @@ Transform:
   m_GameObject: {fileID: 1215887708}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.35828, y: -3.665173, z: 1.0275326}
+  m_LocalPosition: {x: -3.7, y: -3.665173, z: 1.0275326}
   m_LocalScale: {x: 0.45199, y: 0.45199, z: 0.45199}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2208,7 +2208,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 51833b547508e144e832d81bc4d9212c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2229,7 +2229,7 @@ Transform:
   m_GameObject: {fileID: 1642597226}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1982803, y: -1.4951731, z: 1.0275326}
+  m_LocalPosition: {x: -6.85, y: -3.34, z: 1.0275326}
   m_LocalScale: {x: 0.09147104, y: 0.09147104, z: 0.09147104}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2337,7 +2337,7 @@ Transform:
   m_GameObject: {fileID: 1685580357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.68, y: -1.38, z: 1.0275326}
+  m_LocalPosition: {x: -3.88, y: -1.55, z: 1.0275326}
   m_LocalScale: {x: 0.106873445, y: 0.106873445, z: 0.106873445}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2725,7 +2725,7 @@ Transform:
   m_GameObject: {fileID: 2099412083}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.162, y: -3.413, z: 1.0275326}
+  m_LocalPosition: {x: -7.03, y: -1.85, z: 1.0275326}
   m_LocalScale: {x: 0.07229482, y: 0.07229482, z: 0.07229482}
   m_ConstrainProportionsScale: 0
   m_Children: []
