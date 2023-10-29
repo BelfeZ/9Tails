@@ -80,6 +80,7 @@ public class Lane : MonoBehaviour
     }
     private void PerfectHit()
     {
+        charAnimation.TriggerPerfectAnimation();
         ScoreManager.Perfect();
 
         //Don Update
