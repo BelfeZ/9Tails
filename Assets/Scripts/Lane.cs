@@ -3,21 +3,31 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Melanchall.DryWetMidi.Interaction;
+using MidiJack;
 
 public class Lane : MonoBehaviour
 {
     [SerializeField] public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     [SerializeField] public KeyCode input;
+    [SerializeField] public int pianoInput;
     [SerializeField] public GameObject notePrefab;
     List<Note> notes = new List<Note>();
     [SerializeField] public List<double> timeStamps;
     [SerializeField] public CharacterAnimation charAnimation;
-
+    private double timeStamp;
+    private double marginOfError;
+    private double audioTime;
+    private bool[] noteHeld;
     int spawnIndex = 0;
     int inputIndex = 0;
 
     public Healthbar healthbar;
-    
+
+    void Start()
+    {
+        noteHeld = new bool[128];
+    }
+
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
         foreach (var note in array)
@@ -31,6 +41,7 @@ public class Lane : MonoBehaviour
     }
     void Update()
     {
+
         if (spawnIndex < timeStamps.Count)
         {
             if (SongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
@@ -44,9 +55,9 @@ public class Lane : MonoBehaviour
 
         if (inputIndex < timeStamps.Count)
         {
-            double timeStamp = timeStamps[inputIndex];
-            double marginOfError = SongManager.Instance.marginOfError;
-            double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            timeStamp = timeStamps[inputIndex];
+            marginOfError = SongManager.Instance.marginOfError;
+            audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
             if (Input.GetKeyDown(input))
             {
@@ -64,10 +75,6 @@ public class Lane : MonoBehaviour
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
                 }
-                else
-                {
-                    print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
-                }
             }
             if (timeStamp + marginOfError <= audioTime)
             {
@@ -78,32 +85,67 @@ public class Lane : MonoBehaviour
         }       
     
     }
+
+    private void OnEnable()
+    {
+        MidiMaster.noteOnDelegate += NoteOn;
+        //MidiMaster.noteOffDelegate += NoteOff;
+    }
+
+    private void OnDisable()
+    {
+        MidiMaster.noteOnDelegate -= NoteOn;
+        //MidiMaster.noteOffDelegate -= NoteOff;
+    }
+
+    void NoteOn(MidiChannel channel, int note, float velocity)
+    {
+        if (note == pianoInput)
+        {
+            if (Math.Abs(audioTime - timeStamp) < marginOfError)
+            {
+                PerfectHit();
+                print($"Hit on MIDI note {note}");
+                Destroy(notes[inputIndex].gameObject);
+                inputIndex++;
+            }
+            else if (Math.Abs(audioTime - timeStamp) < (marginOfError + 0.07f))
+            {
+                GreatHit();
+                print($"GreatHit on MIDI note {note}");
+                Destroy(notes[inputIndex].gameObject);
+                inputIndex++;
+            }
+        }
+        if (timeStamp + marginOfError <= audioTime)
+        {
+            Miss();
+            print($"Missed {inputIndex} note");
+            inputIndex++;
+        }
+    }
+    /*void NoteOff(MidiChannel channel, int note)
+    {
+
+    }*/
+
     private void PerfectHit()
     {
         charAnimation.TriggerPerfectAnimation();
         ScoreManager.Perfect();
-
-        //Don Update
         healthbar.Perfect_Healthbar();
-        //to here
     }
 
     public void GreatHit()
     {
         charAnimation.TriggerGoodAnimation();
         ScoreManager.Great();
-        
-        //Don Update
         healthbar.Great_Healthbar();
-        //to here
     }
     public void Miss()
     {
         charAnimation.TriggerMissedAnimation();
         ScoreManager.Miss();
-
-        //Don Update
         healthbar.Missed_Healthbar();
-        //to here
     }
 }
