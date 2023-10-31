@@ -20,7 +20,14 @@ public class Lane : MonoBehaviour
     private bool[] noteHeld;
     int spawnIndex = 0;
     int inputIndex = 0;
+    public List<NoteType> noteTypes = new List<NoteType>();
+    public List<float> holdDurations = new List<float>();
 
+    public enum NoteType
+    {
+        Tap,
+        Hold
+    }
     public Healthbar healthbar;
 
     void Start()
@@ -30,12 +37,37 @@ public class Lane : MonoBehaviour
 
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
-        foreach (var note in array)
+        /*foreach (var note in array)
         {
             if (note.NoteName == noteRestriction)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
+            }
+        }*/
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            var note = array[i];
+            if (note.NoteName == noteRestriction)
+            {
+                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
+                var timeStampInSeconds = (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f;
+                timeStamps.Add(timeStampInSeconds);
+
+                if (i < array.Length - 1 && array[i + 1].NoteName == note.NoteName)
+                {
+                    var nextNoteStartTime = TimeConverter.ConvertTo<MetricTimeSpan>(array[i + 1].Time, SongManager.midiFile.GetTempoMap());
+                    var holdDurationInSeconds = (double)nextNoteStartTime.TotalMicroseconds / 1000000.0 - timeStampInSeconds;
+                    noteTypes.Add(NoteType.Hold);
+                    holdDurations.Add((float)holdDurationInSeconds);
+                    i++;
+                }
+                else
+                {
+                    noteTypes.Add(NoteType.Tap);
+                    holdDurations.Add(0f);
+                }
             }
         }
     }

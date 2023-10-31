@@ -6,48 +6,65 @@ using UnityEngine.UI;
 public class Healthbar : MonoBehaviour
 {
     public Slider Healthbar_Silder;
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
+    public float currentVelocity = 0;
     public bool life;
-    
-    public void SetMaxHealth(int health)
+    public float hp;
+    private bool isStart;
+
+    public void SetMaxHealth(float health)
     {
         Healthbar_Silder.maxValue = health;
         Healthbar_Silder.value = health;
     }
 
-    public void SetHealth(int health)
+    /*public void SetHealth(float health)
     {
         Healthbar_Silder.value = health;
-    }
+    }*/
 
     public void Start()
     {
+        isStart = true;
         life = true;
         currentHealth = maxHealth;
+        hp = maxHealth;
         SetMaxHealth(maxHealth);
 
     }
 
     public void Perfect_Healthbar()
     {
-        currentHealth += 40;
-        SetHealth(currentHealth);
+        if (life == true)
+        {
+            hp += 40f;
+        }
     }
 
     public void Great_Healthbar()
     {
-        currentHealth += 20;
-        SetHealth(currentHealth);
+        if (life == true)
+        {
+            hp += 20f;
+        }
     }
 
     public void Missed_Healthbar()
     {
-        currentHealth -= 20;
-        SetHealth(currentHealth);
+        if (life == true)
+        {
+            hp -= 20f;
+        }
     }
-    public void Update()
+    private void Update()
     {
+        if (isStart)
+        {
+            currentHealth = Mathf.SmoothDamp(currentHealth, hp, ref currentVelocity, 0.5f);
+            Healthbar_Silder.value = currentHealth;
+        }
+
         if (currentHealth > 0)
         {
             life = true;
@@ -57,15 +74,13 @@ public class Healthbar : MonoBehaviour
             life = false;
         }
 
-        if (currentHealth > 100)
+        if (hp > maxHealth)
         {
-            currentHealth = 100;
+            hp = maxHealth;
         }
         else if (life == false)
         {
-            currentHealth = 0;
+            hp = 0;
         }
-
     }
-
 }
