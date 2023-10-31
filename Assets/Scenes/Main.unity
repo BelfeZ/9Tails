@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteRestriction: 2
   input: 115
+  pianoInput: 62
   notePrefab: {fileID: 7151522083910069281, guid: 5616ef8c4f5186b4dbd4fb319f5ab96c, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1138346574}
@@ -785,6 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteRestriction: 9
   input: 108
+  pianoInput: 69
   notePrefab: {fileID: 922600066160796502, guid: 179ce9d275de7d547b93f71a50b8c2ff, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1182542618}
@@ -942,6 +944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteRestriction: 11
   input: 59
+  pianoInput: 71
   notePrefab: {fileID: 2039977322507197967, guid: 82ffa2c3ae2fee94eb7822cac55a84b2, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1215887712}
@@ -1094,6 +1097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteRestriction: 5
   input: 102
+  pianoInput: 65
   notePrefab: {fileID: 3865670576671484263, guid: b9185883b85811b4eabfec57f9cbf13c, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1685580361}
@@ -1871,6 +1875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteRestriction: 7
   input: 107
+  pianoInput: 67
   notePrefab: {fileID: 6842798966598062276, guid: 3c48fb8faacaace4b82e78730a0f290b, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1642597230}
@@ -2109,6 +2114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteRestriction: 4
   input: 100
+  pianoInput: 64
   notePrefab: {fileID: 1334611509876185940, guid: c7366f8ef572d8d40bff03f3275a37b0, type: 3}
   timeStamps: []
   charAnimation: {fileID: 1038212065}
@@ -2678,6 +2684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteRestriction: 0
   input: 97
+  pianoInput: 60
   notePrefab: {fileID: 513779610764421356, guid: 14fc87820e2295c4d9bca2a032340bb0, type: 3}
   timeStamps: []
   charAnimation: {fileID: 2099412087}

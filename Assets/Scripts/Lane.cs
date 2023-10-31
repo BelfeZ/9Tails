@@ -100,28 +100,31 @@ public class Lane : MonoBehaviour
 
     void NoteOn(MidiChannel channel, int note, float velocity)
     {
-        if (note == pianoInput)
+        if (inputIndex < notes.Count)
         {
-            if (Math.Abs(audioTime - timeStamp) < marginOfError)
+            if (note == pianoInput && notes[inputIndex] != null)
             {
-                PerfectHit();
-                print($"Hit on MIDI note {note}");
-                Destroy(notes[inputIndex].gameObject);
+                if (Math.Abs(audioTime - timeStamp) < marginOfError)
+                {
+                    PerfectHit();
+                    print($"Hit on MIDI note {note}");
+                    Destroy(notes[inputIndex].gameObject);
+                    inputIndex++;
+                }
+                else if (Math.Abs(audioTime - timeStamp) < (marginOfError + 0.07f))
+                {
+                    GreatHit();
+                    print($"GreatHit on MIDI note {note}");
+                    Destroy(notes[inputIndex].gameObject);
+                    inputIndex++;
+                }
+            }
+            else if (timeStamp + marginOfError <= audioTime)
+            {
+                Miss();
+                print($"Missed {inputIndex} note");
                 inputIndex++;
             }
-            else if (Math.Abs(audioTime - timeStamp) < (marginOfError + 0.07f))
-            {
-                GreatHit();
-                print($"GreatHit on MIDI note {note}");
-                Destroy(notes[inputIndex].gameObject);
-                inputIndex++;
-            }
-        }
-        if (timeStamp + marginOfError <= audioTime)
-        {
-            Miss();
-            print($"Missed {inputIndex} note");
-            inputIndex++;
         }
     }
     /*void NoteOff(MidiChannel channel, int note)
