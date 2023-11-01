@@ -17,7 +17,13 @@ public class ScoreManager : MonoBehaviour
     public static  int[] multiplierThresholds = {2,4,6};
     static int perfectScore = 20;
     static int greatScore = 10;
-    
+
+    //Don'Update
+    public static float totalNotes;
+    public static float perfectHits;
+    public static float greatHits;
+    public static float missHits;
+
     void Start()
     {
         Instance = this;
@@ -41,6 +47,9 @@ public class ScoreManager : MonoBehaviour
         
         currentScore+= perfectScore * currentMultiplier;
         //Instance.hitSFX.Play();
+
+        //Don'Update
+        perfectHits++;
     }
 
     public static void Great()
@@ -58,6 +67,9 @@ public class ScoreManager : MonoBehaviour
         //}
         
         currentScore += greatScore * currentMultiplier;
+
+        //Don'Update
+        greatHits++;
     }
     public static void Miss()
     {
@@ -66,10 +78,20 @@ public class ScoreManager : MonoBehaviour
         currentScore += 0;
         Debug.Log("Missed Reset Combo");
         //Instance.missSFX.Play();
+
+        //Don'Update
+        missHits++;
     }
     private void Update()
     {
         scoreText.text = currentScore.ToString();
         comboText.text = "Combo x" + currentMultiplier;
+
+        //Don's Update
+        if(SongManager.finished == true)
+        {
+            float totalNotesCheck = perfectHits + greatHits + missHits;
+            totalNotes = totalNotesCheck;
+        }
     }
 }

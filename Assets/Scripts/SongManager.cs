@@ -22,7 +22,11 @@ public class SongManager : MonoBehaviour
     [SerializeField] public float noteSpawnX;
     [SerializeField] public float noteTapX;
     private float timeLeft;
-    private bool finished;
+
+    //Don's Update
+    public static bool finished;
+    public static bool forloadSceneResult;
+
     public float noteDespawnX
     {
         get
@@ -33,6 +37,8 @@ public class SongManager : MonoBehaviour
     public static MidiFile midiFile;
     void Start()
     {
+        forloadSceneResult = false;
+
         finished = false;
         Instance = this;
         if (Application.streamingAssetsPath.StartsWith("http://") ||
@@ -109,5 +115,15 @@ public class SongManager : MonoBehaviour
         Debug.Log("Song ended waiting for result.");
         yield return new WaitForSeconds(5); 
         Debug.Log("Result");
+
+        //Don's Update
+        yield return new WaitForSeconds(2);
+        Debug.Log("Total Notes : " + ScoreManager.totalNotes);
+        Debug.Log("Perfect : " + ScoreManager.perfectHits);
+        Debug.Log("Great : " + ScoreManager.greatHits);
+        Debug.Log("Msss : " + ScoreManager.missHits);
+        Debug.Log("Total Score : " + ScoreManager.currentScore);
+        yield return new WaitForSeconds(2);
+        forloadSceneResult = true;
     }
 }

@@ -23,7 +23,10 @@ public class LoadScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       if(SongManager.forloadSceneResult == true && ScoreTextManager.resultisActive == false)
+        {
+            Result();
+        }
     }
     
     public void LoadNextLevel()
@@ -34,6 +37,11 @@ public class LoadScene : MonoBehaviour
     public void BackToMenu()
     {
         StartCoroutine(LoadLevel("MainMenu"));
+    }
+
+    public void Result()
+    {
+        StartCoroutine(LoadLevel("Result"));
     }
 
     IEnumerator LoadLevel(string scenename)
